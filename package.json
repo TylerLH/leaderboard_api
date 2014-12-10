@@ -1,0 +1,32 @@
+{
+  "name": "hands",
+  "version": "0.0.0",
+  "description": "Hands@Work Web Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index -e .coffee",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Hughes <tyler@kintla.co>",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.0",
+    "body-parser": "^1.10.0",
+    "dotenv": "^0.4.0",
+    "express": "^4.10.4",
+    "mongoose": "^3.8.20",
+    "mongoose-unique-validator": "^0.4.1",
+    "morgan": "^1.5.0",
+    "params": "^0.1.1",
+    "passport": "^0.2.1",
+    "passport-http": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "passport-token-auth": "^0.1.2"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.8.0",
+    "gulp": "^3.8.10",
+    "nodemon": "^1.2.1"
+  }
+}
