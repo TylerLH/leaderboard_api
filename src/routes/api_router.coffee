@@ -28,9 +28,11 @@ router.post '/register', (req, res) ->
 # POST /api/authenticate
 # Authenticate username/password combination
 router.post '/authenticate', (req, res) ->
-  verify req.body.username, req.body.password, (err, isValid) ->
+  User.findOne username: req.body.username, (err, user) ->
     return res.sendStatus 500 if err
-    return res.sendStatus 401 unless isValid
-    res.sendStatus 200
+    return res.sendStatus 401 unless user?
+    user.comparePassword req.body.password, (err, isValid) ->
+      return res.sendStatus 500 if err
+      res.json user
 
 module.exports = router
