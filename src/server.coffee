@@ -6,6 +6,8 @@ morgan        = require 'morgan'
 bodyParser    = require 'body-parser'
 mongoose      = require 'mongoose'
 passport      = require 'passport'
+# Connect to database and start app server
+mongoose.connect process.env.MONGODB_URL
 
 app.set 'port', process.env.PORT || 3000
 
@@ -18,8 +20,5 @@ app.get '/', (req, res) ->
   
 app.use '/api', require './routes/api_router'
 
-# Connect to database and start app server
-mongoose.connect process.env.MONGODB_URL, ->
-
-  app.listen app.get('port'), ->
-    console.log "Server is running on port #{app.get('port')}"
+app.listen app.get('port'), ->
+  console.log "Server is running on port #{app.get('port')}"
