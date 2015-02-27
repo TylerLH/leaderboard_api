@@ -18,9 +18,15 @@
 
   passport = require('passport');
 
+  mongoose.connect(process.env.MONGODB_URL, function(err) {
+    if (err) {
+      throw err;
+    }
+  });
+
   app.set('port', process.env.PORT || 3000);
 
-  app.use(morgan('combined'));
+  app.use(morgan('dev'));
 
   app.use(bodyParser.json());
 
@@ -32,10 +38,8 @@
 
   app.use('/api', require('./routes/api_router'));
 
-  mongoose.connect(process.env.MONGODB_URL, function() {
-    return app.listen(app.get('port'), function() {
-      return console.log("Server is running on port " + (app.get('port')));
-    });
+  app.listen(app.get('port'), function() {
+    return console.log("Server is running on port " + (app.get('port')));
   });
 
 }).call(this);
