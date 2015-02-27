@@ -72,7 +72,7 @@ userSchema.methods.getPersonalBest = (cb) ->
 
 # Get the user's current rank
 userSchema.methods.getRank = (cb) ->
-  @getPersonalBest (err, score) =>
+  @getPersonalBest (err, score) ->
     return cb err if err
     Score
       .distinct '_player', score: $gte: score.score

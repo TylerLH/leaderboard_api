@@ -4,8 +4,8 @@
   "description": "Hands@Work Web Application",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/server.js",
-    "dev": "nodemon -e .coffee development.js",
+    "start": "node app.js",
+    "dev": "nodemon -e .coffee app.js",
     "build": "coffee -c -o ./build ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,6 +33,6 @@
     "nodemon": "^1.2.1"
   },
   "engines": {
-    "node": "0.11.x"
+    "node": "0.11.13"
   }
 }

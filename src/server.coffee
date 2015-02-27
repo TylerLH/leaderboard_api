@@ -7,17 +7,18 @@ bodyParser    = require 'body-parser'
 mongoose      = require 'mongoose'
 passport      = require 'passport'
 # Connect to database and start app server
-mongoose.connect process.env.MONGODB_URL
+mongoose.connect process.env.MONGODB_URL, (err) ->
+  throw err if err
 
 app.set 'port', process.env.PORT || 3000
 
-app.use morgan 'combined'
+app.use morgan 'dev'
 app.use bodyParser.json()
 app.use passport.initialize()
 
 app.get '/', (req, res) ->
   res.send "Welcome to Hands@Work!"
-  
+
 app.use '/api', require './routes/api_router'
 
 app.listen app.get('port'), ->
