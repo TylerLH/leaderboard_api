@@ -7,7 +7,8 @@ bodyParser    = require 'body-parser'
 mongoose      = require 'mongoose'
 passport      = require 'passport'
 # Connect to database and start app server
-mongoose.connect process.env.MONGODB_URL, (err) ->
+dbUrl = process.env.MONGODB_URL || process.env.MONGOLAB_URI
+mongoose.connect dbUrl, (err) ->
   throw err if err
 
 app.set 'port', process.env.PORT || 3000
