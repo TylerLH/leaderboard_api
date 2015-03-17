@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon -e .coffee app.js",
-    "build": "coffee -c -o ./build ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tyler Hughes <tyler@kintla.co>",

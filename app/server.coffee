@@ -6,6 +6,7 @@ morgan        = require 'morgan'
 bodyParser    = require 'body-parser'
 mongoose      = require 'mongoose'
 passport      = require 'passport'
+
 # Connect to database and start app server
 dbUrl = process.env.MONGODB_URL || process.env.MONGOLAB_URI
 mongoose.connect dbUrl, (err) ->
