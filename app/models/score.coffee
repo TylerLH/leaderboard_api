@@ -20,9 +20,7 @@ scoreSchema = new mongoose.Schema
     average_reaction_duration: Number
     reaction_attempts: Number
 
-scoreSchema.plugin hidden
-
-scoreSchema.methods.getLeaderboard = (cb) ->
+scoreSchema.statics.getLeaderboard = (cb) ->
   @find()
   .populate '_player', 'name username'
   .sort '-score'
@@ -30,5 +28,7 @@ scoreSchema.methods.getLeaderboard = (cb) ->
   .exec (err, scores) ->
     return cb err if err?
     cb null, scores
+
+# scoreSchema.plugin hidden
 
 module.exports = mongoose.model 'Score', scoreSchema

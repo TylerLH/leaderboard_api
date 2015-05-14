@@ -21,6 +21,7 @@ authenticate = passport.authenticate 'basic', session: false
 # POST /api/register
 # Register new user
 router.post '/register', (req, res) ->
+  console.log req.body
   user = new User req.body
   user.save (err, user) ->
     return res.status(400).json err if err
@@ -31,7 +32,7 @@ router.post '/register', (req, res) ->
 router.post '/authenticate', (req, res) ->
   User.findOne username: req.body.username, (err, user) ->
     return res.sendStatus 500 if err
-    return res.sendStatus 401 unless user
+    return res.status(401).json error: "Account doesn't exist" unless user
     user.comparePassword req.body.password, (err, isValid) ->
       if err?
         return res.status(500).json error: "There was an error logging in."
@@ -53,7 +54,7 @@ router.post '/scores', authenticate, (req, res) ->
 
 # GET /api/scores/top
 # Returns the top 10 scores
-router.get '/scores/top', authenticate, (req, res) ->
+router.get '/scores/top', (req, res) ->
   Score.getLeaderboard (err, scores) ->
     return res.sendStatus 500 if err
     res.json scores

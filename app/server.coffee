@@ -32,12 +32,16 @@ else
 
 app.use express.static './app/public'
 app.use bodyParser.json()
+app.use bodyParser.urlencoded(extended: true)
 app.use passport.initialize()
 
 app.get '/', (req, res) ->
   res.render "home"
 
 app.use '/api', require './routes/api_router'
+
+app.all "*", (req, res) ->
+  res.render "home"
 
 app.listen app.get('port'), ->
   console.log "Server is running on port #{app.get('port')}"

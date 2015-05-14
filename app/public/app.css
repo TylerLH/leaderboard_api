@@ -1,29 +1,32 @@
-html, body {
+@import "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css";
+html, body, .fs {
   width: 100%;
   height: 100%; }
 
-.main-content {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  justify-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.fh {
   height: 100%; }
 
-.masthead {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: columns;
-      -ms-flex-direction: columns;
-          flex-direction: columns;
-  text-align: center; }
-  .masthead h1 {
-    font-size: 5rem; }
+.fw {
+  width: 100%; }
+
+.navbar-transparent {
+  border-width: 0px;
+  box-shadow: 0px 0px;
+  background-color: transparent !important; }
+  .navbar-transparent .nav > li a {
+    color: inherit;
+    background-color: transparent; }
+    .navbar-transparent .nav > li a:hover, .navbar-transparent .nav > li a:active, .navbar-transparent .nav > li a:focus {
+      color: inherit;
+      background-color: transparent; }
+
+.Home {
+  height: 100%; }
+  .Home .masthead {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    text-align: center; }
+    .Home .masthead h1 {
+      font-size: 5rem; }
