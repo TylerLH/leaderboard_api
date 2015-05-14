@@ -9,6 +9,10 @@ scoreSchema = new mongoose.Schema
     type: Number
     required: 'Score is required'
     index: true
+  rating:
+    type: Number
+    min: 1
+    max: 5
   metadata:
     average_pattern_duration: Number
     pattern_attempts: Number
@@ -17,5 +21,14 @@ scoreSchema = new mongoose.Schema
     reaction_attempts: Number
 
 scoreSchema.plugin hidden
+
+scoreSchema.methods.getLeaderboard = (cb) ->
+  @find()
+  .populate '_player', 'name username'
+  .sort '-score'
+  .limit 10
+  .exec (err, scores) ->
+    return cb err if err?
+    cb null, scores
 
 module.exports = mongoose.model 'Score', scoreSchema

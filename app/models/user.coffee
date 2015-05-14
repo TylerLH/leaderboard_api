@@ -60,6 +60,16 @@ userSchema.methods.comparePassword = (input, cb) ->
 userSchema.virtual('name.full').get ->
   "#{@name.first} #{@name.last}"
 
+# Get the user's top 10 scores
+userSchema.methods.getPersonalScores = (cb) ->
+  Score
+    .find _player: @_id
+    .sort '-score'
+    .limit 10
+    .exec (err, scores) ->
+      return cb err if err
+      cb null, scores
+
 # Get the user's personal best score
 userSchema.methods.getPersonalBest = (cb) ->
   Score

@@ -54,21 +54,24 @@ router.post '/scores', authenticate, (req, res) ->
 # GET /api/scores/top
 # Returns the top 10 scores
 router.get '/scores/top', authenticate, (req, res) ->
-  Score
-    .find()
-    .populate '_player', 'name username'
-    .sort '-score'
-    .limit 10
-    .exec (err, scores) ->
-      return res.sendStatus 500 if err
-      res.json scores
+  Score.getLeaderboard (err, scores) ->
+    return res.sendStatus 500 if err
+    res.json scores
+
+# GET /api/scores/personal
+# Returns the top 10 personal scores
+router.get '/scores/personal', authenticate, (req, res) ->
+  req.user.getPersonalScores (err, scores) ->
+    return res.json err if err
+    return res.sendStatus 500 unless scores
+    res.json scores
 
 # GET /api/scores/personal_best
 # Returns best score for current user
 router.get '/scores/personal_best', authenticate, (req, res) ->
   req.user.getPersonalBest (err, score) ->
     return res.json err if err
-    return res.sendStatus 200 unless score
+    return res.sendStatus 500 unless score
     res.json score
 
 # GET /api/rank
