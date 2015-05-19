@@ -3,29 +3,34 @@ var LoginActions = require('../actions/LoginActions');
 
 class LoginStore {
   constructor() {
-    this._credentials = null
-    this._user = null
+    this.credentials = JSON.parse(localStorage.getItem('credentials'));
+    this.user = JSON.parse(localStorage.getItem('user'));
 
     this.bindListeners({
-      handleLogin: LoginActions.LOGIN_USER
+      handleLogin: LoginActions.LOGIN_USER,
+      handleLogout: LoginActions.LOGOUT_USER
     });
   }
 
   handleLogin(payload) {
-    this._user = payload.user;
-    this._credentials = payload.credentials;
+    this.user = payload.user;
+    this.credentials = payload.credentials;
+
+    localStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('credentials', JSON.stringify(this.credentials));
   }
 
-  get user() {
-    return this._user;
-  }
+  handleLogout() {
+    this.user = null;
+    this.credentials = null;
 
-  get credentials() {
-    return this._credentials;
+    localStorage.removeItem('user');
+    localStorage.removeItem('credentials');
   }
 
   static isLoggedIn() {
-    return !!this._user;
+    let state = this.getState();
+    return !!state.user;
   }
 }
 

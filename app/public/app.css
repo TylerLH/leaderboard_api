@@ -13,10 +13,14 @@ html, body, .fs {
   border-width: 0px;
   box-shadow: 0px 0px;
   background-color: transparent !important; }
-  .navbar-transparent .nav > li a {
+  .navbar-transparent .navbar-brand {
+    color: #444; }
+    .navbar-transparent .navbar-brand:hover {
+      color: #333; }
+  .navbar-transparent .nav > li a, .navbar-transparent .nav > li.active a {
     color: inherit;
     background-color: transparent; }
-    .navbar-transparent .nav > li a:hover, .navbar-transparent .nav > li a:active, .navbar-transparent .nav > li a:focus {
+    .navbar-transparent .nav > li a:hover, .navbar-transparent .nav > li a:active, .navbar-transparent .nav > li a:focus, .navbar-transparent .nav > li.active a:hover, .navbar-transparent .nav > li.active a:active, .navbar-transparent .nav > li.active a:focus {
       color: inherit;
       background-color: transparent; }
 

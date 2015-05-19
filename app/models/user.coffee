@@ -52,6 +52,8 @@ userSchema.pre 'save', (next) ->
 
 # Add password validation method to user
 userSchema.methods.comparePassword = (input, cb) ->
+  console.log @
+  console.log @password, input
   bcrypt.compare input, @password, (err, isValid) ->
     return cb(err) if err
     cb null, isValid

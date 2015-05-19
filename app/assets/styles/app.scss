@@ -13,7 +13,14 @@ html, body, .fs {
   box-shadow: 0px 0px;
   background-color: transparent !important;
 
-  .nav > li a {
+  .navbar-brand {
+    color: #444;
+    &:hover {
+      color: #333;
+    }
+  }
+
+  .nav > li a, .nav > li.active a {
     color: inherit;
     background-color: transparent;
     &:hover, &:active, &:focus {

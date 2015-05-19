@@ -1,5 +1,5 @@
 mongoose = require 'mongoose'
-hidden   = do require 'mongoose-hidden'
+timestamps = require 'mongoose-timestamp'
 
 scoreSchema = new mongoose.Schema
   _player:
@@ -29,6 +29,6 @@ scoreSchema.statics.getLeaderboard = (cb) ->
     return cb err if err?
     cb null, scores
 
-# scoreSchema.plugin hidden
+scoreSchema.plugin timestamps
 
 module.exports = mongoose.model 'Score', scoreSchema

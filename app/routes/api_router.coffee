@@ -36,7 +36,7 @@ router.post '/authenticate', (req, res) ->
     user.comparePassword req.body.password, (err, isValid) ->
       if err?
         return res.status(500).json error: "There was an error logging in."
-      unless isValid?
+      unless isValid
         return res.status(401).json error: "Invalid username or password."
       res.json user
 
