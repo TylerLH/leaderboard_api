@@ -1,12 +1,12 @@
-# Hands@Work API
+# Leaderboard API
 
-Web API for the Hands@Work game by Kintla.
+Web API for a game's authentication & leaderboard.
 
 ## Development
 
 1. Ensure you have nodejs >= 0.11.x, npm, and MongoDB installed.
 
-2. Clone the project using git `git clone git@github.com:freestone/hands_api.git && cd hands_api`
+2. Clone the project using git `git clone git@github.com:tylerlh/leaderboard_api.git && cd leaderboard_api`
 
 3. Install dependencies using `npm install`
 
